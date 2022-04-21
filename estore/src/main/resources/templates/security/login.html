@@ -1,0 +1,32 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="/shared/layout::dynamic(~{::view})">
+	
+<main th:fragment="view" class="row justify-content-center">
+    <form action="/spring/login" method="post"  class="col-6 was-validated">
+    	<div class="card shadow rounded">
+    		<div class="card-header bg-primary text-white">
+    			<b>ĐĂNG NHẬP</b>
+    			<i class="float-end text-danger" th:text="${message}"></i>
+    		</div>
+    		<div class="card-body">
+    			<div class="mb-3 form-floating">
+		            <input name="username" class="form-control" required id="un" placeholder="un">
+		            <label for="un">Tên đăng nhập?</label>
+		        </div>
+		        <div class="mb-3 form-floating">
+		            <input name="password" class="form-control" required id="pw" placeholder="pw">
+		            <label for="pw">Mật khẩu?</label>
+		        </div>
+		        <div class="form-check form-switch">
+					<input name="remember-me" class="form-check-input" type="checkbox" id="rm">
+					<label class="form-check-label" for="rm">Ghi nhớ tài khoản?</label>
+				</div>
+    		</div>
+    		<div class="card-footer text-end">
+    			<button class="btn btn-primary">Đăng nhập</button>
+    		</div>
+    	</div>
+    </form>
+</main>
+
+</html>

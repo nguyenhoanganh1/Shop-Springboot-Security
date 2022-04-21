@@ -1,0 +1,27 @@
+<div xmlns:th="http://www.thymeleaf.org">
+	<div class="card mb-3">
+        <div class="card-header">
+        	<i class='bx bx-search-alt'></i> 
+        	<b>TÌM KIẾM</b>
+        </div>
+        <div class="card-body">
+        	<form action="/product/search" method="post">
+            	<input th:value="${param.keywords}" name="keywords" placeholder="Keywords?" class="form-control">
+            </form>
+        </div>
+    </div>
+    
+    <div class="card mb-3">
+        <div class="card-header">
+        	<i class='bx bx-category-alt'></i> <b>DANH MỤC</b>
+        </div>
+        <div class="list-group list-group-flush">
+        	<th:block th:each="c: ${categories}">
+            	<a th:href="@{|/product/category/${c.id}|}" class="list-group-item list-group-item-action">
+            		<span th:text="${c.nameVn}"></span>
+            		<span class="badge rounded-pill bg-secondary float-end" th:text="${c.products.size()}"></span>
+            	</a>
+            </th:block>
+        </div>
+    </div>
+</div>

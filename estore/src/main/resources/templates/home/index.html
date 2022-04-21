@@ -1,0 +1,19 @@
+<html th:replace="/shared/layout::dynamic(~{::main})" xmlns:th="http://www.thymeleaf.org">
+<main>
+	<h3 class="alert alert-success">BEST SELLERS</h3>
+	<div class="row mb-3">
+		<div th:each="p: ${best}" class="col">
+			<div th:replace="/product/list::pbox"></div>
+		</div>
+	</div>
+	
+	<h3 class="alert alert-danger">PROMOTION ITEMS</h3>
+	<div class="row">
+		<div th:each="p: ${prom}" class="col">
+			<div th:replace="/product/list::pbox"></div>
+		</div>
+	</div>
+	
+	<div th:replace="/product/_share-dialog"></div>
+</main>
+</html>

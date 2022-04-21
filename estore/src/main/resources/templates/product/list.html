@@ -1,0 +1,26 @@
+<html th:replace="/shared/layout::dynamic(~{::main})" xmlns:th="http://www.thymeleaf.org">
+<main>
+    <h3 class="alert alert-success">SẢN PHẨM</h3>
+    <div class="row">
+        <div class="col-4 mb-3" th:each="p: ${list}">
+            <div th:fragment="pbox" class="card shadow-sm" th:attr="data-id=${p.id}">
+                <div class="card-header">
+                    <div th:text="${p.name}"></div>
+                </div>
+                <div class="card-body text-center">
+                    <a th:href="@{|/product/detail/${p.id}|}">
+                        <img th:src="@{|/images/items/${p.image}|}" style="height: 150px; max-width: 95%">
+                    </a>
+                </div>
+                <div class="card-footer">
+                    <del th:if="${p.discount > 0}" th:text="@{|$${#numbers.formatDecimal(p.unitPrice, 0, 2)}|}"></del>
+                    <i th:text="@{|$${#numbers.formatDecimal(p.promotePrice, 0, 2)}|}"></i>
+                    <div th:replace="/product/_item-actions"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="/product/_share-dialog"></div>
+</main>
+
+</html>

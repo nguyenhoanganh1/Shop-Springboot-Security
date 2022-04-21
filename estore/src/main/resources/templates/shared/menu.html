@@ -1,0 +1,58 @@
+<div xmlns:th="http://www.thymeleaf.org">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/home/index">Trang chủ</a>
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#hmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="hmenu">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/product/discount">Khuyến mại</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/product/latest">Hàng mới</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/product/best">Bán chạy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/product/favorite">Yêu thích</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/product/special">Đặc biệt</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/product/share">Hàng hót</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class='bx bx-user'></i>
+                            <span th:text="${#request.remoteUser == null ? 'My Account' : #request.remoteUser}"></span>
+                        </a>
+                        <ul th:if="${#request.remoteUser == null}" class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/security/login/form">Sign In</a></li>
+                            <li><a class="dropdown-item" href="/account/sign-up">Sign Up</a></li>
+                            <li><a class="dropdown-item" href="/account/forgot-password">Forgot Password</a></li>
+                        </ul>
+                        <ul th:unless="${#request.remoteUser == null}" class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/account/change-password">Change Password</a></li>
+                            <li><a class="dropdown-item" href="/account/edit-profile">Edit Profile</a></li>
+                            <li><a class="dropdown-item" href="/order/list">List of Orders</a></li>
+                            <li><a class="dropdown-item" href="/order/items-purchased">Items Purchased</a></li>
+                            <li><a class="dropdown-item" href="/spring/logout">Sign Out</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cart/view">
+                            <i class='bx bx-cart-alt'></i> 
+                            <span id="cart-cnt">15</span> items x $<span id="cart-amt">105</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>

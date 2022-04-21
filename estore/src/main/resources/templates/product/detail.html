@@ -1,0 +1,21 @@
+<html th:replace="/shared/layout::dynamic(~{::main})" xmlns:th="http://www.thymeleaf.org">
+<main th:attr="data-id=${item.id}">
+	<h3 class="alert alert-success">CHI TIẾT SẢN PHẨM</h3>
+	<img th:src="@{|/images/items/${item.image}|}">
+	<ul>
+		<li>Name: <i th:text="${item.name}"></i></li>
+		<li>Unit Price: <i th:text="${item.unitPrice}"></i></li>
+		<li>Product Date: <i th:text="${item.productDate}"></i></li>
+		<li>Special: <i th:text="${item.special ? 'Yes' : 'No'}"></i></li>
+		<li>Category: <i th:text="${item.category.nameVn}"></i></li>
+	</ul>
+	<div th:replace="/product/_item-actions"></div>
+	<div>HÀNG CÙNG LOẠI</div>
+	<ul>
+		<li th:each="p: ${item.category.products}">
+			<a th:href="@{|/product/detail/${p.id}|}" th:text="${p.name}"></a>
+		</li>
+	</ul>
+	<div th:replace="/product/_share-dialog"></div>
+</main>
+</html>

@@ -1,0 +1,23 @@
+<div xmlns:th="http://www.thymeleaf.org">
+    <form th:object="${item}" method="post" class="card was-validated">
+    	<div class="card-body">
+	        <div class="mb-3">
+	            <label>Category Id</label>
+	            <input th:field="*{id}" class="form-control" placeholder="Auto Number" readonly>
+	        </div>
+	        <div class="mb-3">
+	            <label>English Name</label>
+	            <i class="text-danger float-end">Please fill out this field.</i>
+	            <input th:field="*{name}" class="form-control" required>
+	        </div>
+	        <div class="mb-3">
+	            <label>Vietnamese Name</label>
+	            <i class="text-danger float-end">Please fill out this field.</i>
+	            <input th:field="*{nameVn}" class="form-control" required>
+	        </div>
+        </div>
+        <div class="card-footer">
+            <hr th:replace="/admin/shared/frags::btn-crud('category', *{id})"/>
+        </div>
+    </form>
+</div>
